@@ -11,19 +11,27 @@ function GameBoard() {
     [35, 36, 37, 38, 39, 40, 41],
   ]);
 
-  return gameBoard.map((row, i) => {
-    return (
-      <div className="row" key={i}>
-        {row.map((column, j) => {
-          return (
-            <div className="column" key={j}>
-              {column}
-            </div>
-          );
-        })}
-      </div>
-    );
-  });
+  const Row = ({ gameBoard }) => {
+    const Cell = ({ row }) => {
+      return row.map((cell, j) => {
+        return (
+          <div className="cell" key={j}>
+            {cell}
+          </div>
+        );
+      });
+    };
+
+    return gameBoard.map((row, i) => {
+      return (
+        <div className="row" key={i}>
+          <Cell row={row} />
+        </div>
+      );
+    });
+  };
+
+  return <Row gameBoard={gameBoard} />;
 }
 
 export default GameBoard;
