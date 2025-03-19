@@ -12,20 +12,20 @@ function GameBoard() {
   ]);
 
   const Row = ({ gameBoard }) => {
-    const Cell = ({ row }) => {
-      return row.map((cell, j) => {
-        return (
-          <div className="cell" key={j}>
-            {cell}
-          </div>
-        );
-      });
-    };
-
     return gameBoard.map((row, i) => {
       return (
         <div className="row" key={i}>
           <Cell row={row} />
+        </div>
+      );
+    });
+  };
+
+  const Cell = ({ row }) => {
+    return row.map((cell, j) => {
+      return (
+        <div className="cell" key={j}>
+          {cell}
         </div>
       );
     });
